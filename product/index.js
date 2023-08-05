@@ -82,7 +82,7 @@ app.get('/index', verifyToken, async (req, res) => {
       res.status(500).send('Internal server error');
     }
   } else {
-    res.redirect('http://localhost:3001/auth/login');
+    res.redirect('http://www.devops.com/auth/login');
   }
 });
 
