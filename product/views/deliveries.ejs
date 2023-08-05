@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="euckr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deliveries</title>
+</head>
+<body>
+  <h1>Deliveries</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Status</th>
+        <th>Memo</th>
+        <th>Order ID</th>
+        <th>Delivery Address</th>
+        <th>Delivery Tel</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% deliveries.forEach(delivery => { %>
+        <tr>
+          <td><%= delivery.id %></td>
+          <td><%= delivery.status %></td>
+          <td><%= delivery.memo %></td>
+          <td><%= delivery.order_id %></td>
+          <td><%= delivery.delivery_address %></td>
+          <td><%= delivery.delivery_tel %></td>
+          <td>
+			<form action="/deliveries/<%= delivery.id %>?_method=PUT" method="POST">
+				<input type="hidden" name="status" value="배송 완료">
+        <input type="hidden" name="order_id" value="<%= delivery.order_id %>">
+        <input type="hidden" name="id" value="<%= delivery.id %>">
+        <input type="hidden" name="delivery_address" value="<%= delivery.delivery_address %>">
+				<button type="submit">완료</button>
+			  </form>
+			  <form action="/deliveries/<%= delivery.id %>?_method=PUT" method="POST">
+          <input type="hidden" name="order_id" value="<%= delivery.order_id %>">
+          <input type="hidden" name="id" value="<%= delivery.id %>">
+				<input type="hidden" name="status" value="보류">
+				<button type="submit">보류</button>
+			  </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <a href="http://localhost:3000/index">Back to Main Page</a>
+</body>
+</html>

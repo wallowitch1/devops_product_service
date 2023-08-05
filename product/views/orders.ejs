@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="euckr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders</title>
+</head>
+<body>
+  <h1>Orders</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Order_time</th>
+        <th>Quantity</th>
+        <th>State</th>
+        <% if (accounttype == 'delivery'){ %>
+            <th> select </th>
+		<% } %>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach(orders => { %>
+        <tr>
+          <td><%= orders.id %></td>
+          <td><%= orders.product_id %></td>
+          <td><%= orders.order_date %></td>
+          <td><%= orders.quantity %></td>
+          <td><%= orders.state %></td>
+          <% if (accounttype == 'delivery'){ %>
+          <th>
+            <form  action="/deliveries/" method="POST">
+                <input type="hidden" name="order_id" value="<%= orders.id %>">
+                <input type="submit" value="배달 선택">
+            </form >
+		<% } %>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+ 
+  <a href="/index">Back to Main Page</a>
+</body>
+</html>

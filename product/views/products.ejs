@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td>
+            <button onclick="location.href='/products/edit/<%= product.id %>'">Edit</button>
+            <form action="/products/<%= product.id %>" method="post" style="display: inline;">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <form action="/products" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price">
+    <button type="submit">Add Product</button>
+  </form>
+  <a href="/index">Back to Main Page</a>
+</body>
+</html>
