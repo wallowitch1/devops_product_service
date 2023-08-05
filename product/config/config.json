@@ -1,7 +1,7 @@
 {
   "username": "root",
-  "password": "zmfpdl12",
+  "password": "Keroro2424.!",
   "database": "shop",
-  "host": "127.0.0.1",
+  "host": "192.168.219.200",
   "dialect": "mysql"
 }
