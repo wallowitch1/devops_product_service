@@ -5,6 +5,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const methodOverride = require('method-override');
 const cookieParser = require("cookie-parser");
+const morgan = require('morgan');
 
 
 const jwt = require("jsonwebtoken");
