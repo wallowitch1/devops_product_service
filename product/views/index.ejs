@@ -7,15 +7,15 @@
 	<h1>Product List</h1>
 		<ul>Wellcome <%= user %></ul>
 		<ul>Wellcome <%= accounttype %></ul>
-		<a href="http://localhost:3001/auth/logout">Logout</a>
+		<a href="http://www.devops.com/auth/logout">Logout</a>
 
 		<% if (accounttype == 'product' || accounttype == 'admin'){ %>
 			<a href="/products/add">Product Add</a>
 		<% } %>
 		<% if (accounttype == 'delivery'){ %>
-			<a href="http://localhost:3002/deliveries">Delivery</a>
+			<a href="http://www.devops.com/deliveries">Delivery</a>
 		<% } %>
-			<a href="http://localhost:3003/orders">Orders</a>
+			<a href="http://www.devops.com/orders">Orders</a>
 		<ul>
 			<% products.forEach(function(product) { %>
 
@@ -27,7 +27,7 @@
 					
 				</li>
 				<li>
-					<form action="http://localhost:3003/orders/" method="POST">
+					<form action="http://www.devops.com/orders/" method="POST">
 						<input type="hidden" name="user_id" value="<%= user_id  %>">
 						<input type="hidden" name="product_id" value="<%= product.id %>">
 						<label for="quantity">Quantity:</label>
