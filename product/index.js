@@ -14,6 +14,7 @@ const db = require('./models');
 const productsRouter = require('./routes/product');
 
 const { Product } = require('./models');
+const fs = require('fs');
 
 const app = express();
 const port = 3000;
