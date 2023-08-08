@@ -29,7 +29,7 @@ morgan.token('client-ip', function(req, res) {
 });
 
 // morgan을 사용하여 액세스 로그 설정 (새로운 client-ip 토큰 포함)
-app.use(morgan(':client-ip - :method :url :status :response-time ms', { stream: accessLogStream }));
+app.use(morgan(':client-ip - :remote-user :method :url HTTP/:http-version :status :res[content-length] :response-time ms ":referrer" ":user-agent"', { stream: accessLogStream }));
 
 
 app.use(cookieParser());
