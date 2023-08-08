@@ -21,10 +21,16 @@ const app = express();
 const port = 3000;
 
 // 로그 파일 스트림 생성
-//const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 const accessLogStream = fs.createWriteStream(path.join('/var/log/app/access.log'), { flags: 'a' });
-// morgan을 사용하여 액세스 로그 설정
-app.use(morgan('combined', { stream: accessLogStream }));
+
+// 사용자 정의 토큰 생성
+morgan.token('client-ip', function(req, res) {
+  return req.header('x-forwarded-for') || req.connection.remoteAddress;
+});
+
+// morgan을 사용하여 액세스 로그 설정 (새로운 client-ip 토큰 포함)
+app.use(morgan(':client-ip - :method :url :status :response-time ms', { stream: accessLogStream }));
+
 
 app.use(cookieParser());
 
